@@ -16,7 +16,9 @@
 			        die(json_encode($response)); //Se der erro, o script morre aqui
 		    	} 
 
-				$query = "SELECT 1 FROM Aluno WHERE MatriculaAluno = :matricula";
+		    	//Checa se o usuário já foi cadastrado antes.
+		    	//Primeiro fazemos uma query pelo número da matrícula pra verificar se o usuario não inventou um numero qualquer:
+				$query = "SELECT * FROM aluno WHERE MatriculaAluno = :matricula";
 
 				$query_params = array(
 						':matricula' => $_POST['matricula'];
@@ -31,21 +33,30 @@
 			        $response["message"] = "Erro ao verificar no Banco! Verifique a conexão";
 			        die(json_encode($response));
 		    	}
-
-		    	$row = $stmt->fetch();
-			    if ($row) {
+		    	//Aqui verificamos se o nome bate com a matrícula informada. Se não bater, dá erro:
+		    	$row = $stmt->fetch(PDO:FETCH_ASSOC);
+			    if ($row['NomeAluno'] == $_POST['nome']) {
 			        $response["success"] = 0;
-			        $response["message"] = "Aluno já cadastrado!";
+			        $response["message"] = "Nome Incorreto. Verifique o nome informado. Em caso de problemas mande um email para a organização do evento!";
 			        die(json_encode($response));
 			    }
+			    //Aqui finalmente verificamos se o aluno já possui email ou senha, o que significa que ele já foi cadastrado no sistema:
+			    $email_verif = array_filter($row['EmailAluno']);
+			    $senha_verif = array_filter($row['SenhaAluno']);
 
-			    $query = "INSERT INTO Aluno ( NomeAluno, MatriculaAluno, SenhaAluno, EmailAluno ) values( :nome, :matricula, :senha, :email ) ";
+			    if (!empty($email_verif) || !empty($senha_verif)) {
+					$response["success"] = 0;
+			        $response["message"] = "Usuário já cadastrado!";
+			        die(json_encode($response));
+
+			    }
+			    //Caso passe em todos os testes, alteramos a tabela e inserimos os dados:
+			    $query = "UPDATE aluno SET EmailAluno=:email, SenhaAluno=:senha WHERE MatriculaAluno=:matricula ";
 
 			    $query_params = array(
-			    	':nome' => $_POST['nome'];
-			    	':matricula' => $_POST['matricula'];
-			    	':senha' => $_POST['senha'];
 			    	':email' => $_POST['email'];
+			    	':senha' => $_POST['senha'];
+			    	':matricula' => $_POST['matricula'];
 			    	);
 
 			    try {
@@ -60,7 +71,6 @@
 			    $response["success"] = 1;
 	    		$response["message"] = "Aluno cadastrado com sucesso!";
 	    		echo json_encode($response);
-
 
 		} else if (tipo == 'evento') {
 

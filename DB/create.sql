@@ -31,8 +31,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Aluno` (
   `idAluno` MEDIUMINT NOT NULL AUTO_INCREMENT,
-  `NomeAluno` VARCHAR(80) NULL,
-  `MatriculaAluno` VARCHAR(7) NULL,
+  `NomeAluno` VARCHAR(80) NOT NULL,
+  `MatriculaAluno` VARCHAR(7) NOT NULL,
   `SenhaAluno` VARCHAR(40) NULL,
   `EmailAluno` VARCHAR(100) NULL,
   PRIMARY KEY (`idAluno`),
