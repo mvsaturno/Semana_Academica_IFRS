@@ -104,13 +104,12 @@
 			        die(json_encode($response));
 			    }
 
-			    $query = "INSERT INTO Evento ( NomeEvento, PalestranteEvento, DataEvento, HoraEvento ) values( :nome, :palestrante, :data, :hora ) ";
+			    $query = "INSERT INTO Evento ( NomeEvento, PalestranteEvento, DataEvento ) values( :nome, :palestrante, :data ) ";
 
 			    $query_params = array(
 			    	':nome' => $_POST['nome'];
 			    	':palestrante' => $_POST['palestrante'];
 			    	':data' => $_POST['data'];
-			    	':hora' => $_POST['hora'];
 			    	);
 
 			    try {
