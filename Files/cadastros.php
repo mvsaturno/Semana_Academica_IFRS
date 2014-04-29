@@ -59,17 +59,7 @@
 			    $pre_salt = md5(uniqid(rand(),true));
 			    $salt = substr($pre_salt, 0, 6);
 			    $encrypted = hash("sha256", $passwd . $salt);
-
-			    echo "senha: \n";
-			    var_dump($passwd);
-
-			    echo "pre_salt e salt: \n";
-			    var_dump($pre_salt);
-			    var_dump($salt);
-
-			    echo "encrypted: \n";
-			    var_dump($encrypted);
-
+			    
 			    $query = "UPDATE aluno SET EmailAluno=:email, SenhaAluno=:senha, Salt=:salt WHERE MatriculaAluno=:matricula ";
 
 			    $query_params = array(
