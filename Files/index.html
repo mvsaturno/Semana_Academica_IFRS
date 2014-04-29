@@ -2,6 +2,8 @@
 <head>
 	<title>Formulário cadastro de usuários e Eventos</title>
 	<meta charset="utf8">
+	<link rel="stylesheet" type="text/css" href="css/norm_grid.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script type="text/javascript">
 
 	//*Opção de colocar os palestrantes em uma tabela separada e fazer o 'confere' quando o usuário começar a digitar, se já tem esse palestrante no banco
@@ -77,9 +79,9 @@
 
 	</script>
 </head>
-<body>
+<body class="grid">
 
-<form id="aluno" name="cadastra_aluno" method="POST" action="cadastros.php">
+<form id="aluno" name="cadastra_aluno" class="col-1-1" method="POST" action="cadastros.php">
 
 	<label for="nome">Nome Completo(sem abreviações):</label>
 	<input required type="text" id="nome_aluno" name="nome" placeholder="Seu Nome" />
@@ -94,10 +96,10 @@
 	<input required type="email2" id="email2" name="email2" placeholder="" />
 
 	<label for="senha">Senha:</label>
-	<input required type="passwd" id="senha" name="senha" placeholder="Senha" />
+	<input required type="password" id="senha" name="senha" placeholder="Senha" />
 
 	<label for="senha2">Repita sua senha:</label>
-	<input required type="passwd" id="senha2" name="senha2" placeholder="" />
+	<input required type="password" id="senha2" name="senha2" placeholder="" />
 
 	<input type="hidden" name="tipo" value="aluno" />
 
