@@ -9,7 +9,7 @@ $json = json_decode(file_get_contents($arq), TRUE);
 echo "Saída do Json:<br /> ";
 // var_dump($json["Alunos"]);
 
-// print_r($json["Alunos"]);
+ print_r($json["Alunos"]);
 
 foreach ($json['Alunos'] as $aluno) {
 	// print_r($aluno["Matricula"]);

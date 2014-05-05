@@ -64,7 +64,7 @@
 
 			    $query_params = array(
 			    	':email' => $_POST['email'],
-			    	':senha' => $_POST['senha'],
+			    	':senha' => $encrypted,
 			    	':matricula' => $_POST['matricula'],
 			    	':salt' => $salt
 			    	);

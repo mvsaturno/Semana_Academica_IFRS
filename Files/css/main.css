@@ -2,22 +2,23 @@
 	/*border: 1px solid red;*/
 }
 
-#aluno{
+#aluno, #login, #cadastro{
 	margin: 20px auto;
 	width: 98%;
 	margin-left: 1%;
-	position: relative;
+	/*position: relative;*/
 }
 
-#aluno label{
+#aluno label, #login label, #cadastro label{
 	font-size: 0.95em;
 	font-weight: bold;
 }
 
-#aluno input{
+#aluno input, #login input, #cadastro button{
 	width: 100%;
 	height: 35px;
 	border-radius: 5px;
 	margin-top: 5px;
 	margin-bottom: 20px;
+	padding-left: 5px;
 }
