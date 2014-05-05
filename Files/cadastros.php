@@ -35,7 +35,14 @@
 		    	}
 		    	//Aqui verificamos se o nome bate com a matrícula informada. Se não bater, dá erro:
 		    	$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			    if ($row['NomeAluno'] == $_POST['nome']) {
+
+		    	echo "Nome informado: ";
+		    	var_dump($_POST['nome']);
+
+		    	echo "Nome do banco: ";
+		    	var_dump($row['NomeAluno']);
+
+			    if ( strcasecmp($row['NomeAluno'], $_POST['nome']) === 0 ) {
 			        $response["success"] = 0;
 			        $response["message"] = "Nome Incorreto. Verifique o nome informado. Em caso de problemas mande um email para a organização do evento!";
 			        die(json_encode($response));

@@ -1,10 +1,10 @@
 <?php 
 
     // These variables define the connection information for your MySQL database 
-    $host = "localhost:3307"; 
+    $host = "localhost"; 
     $dbname = "mydb";     
     $username = "root"; //ALTERAR DEPOIS
-    $password = "usbw";  //ALTERAR DEPOIS
+    $password = "";  //ALTERAR DEPOIS
     
     
 

@@ -34,11 +34,8 @@
 		    	}
 		    	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-		    	// echo $row['Salt'];
-
-		    	// var_dump($row);
-
-		    	$salt = $row['Salt'];
+		    	if (!empty($row['SenhaAluno']) || !empty($row['EmailAluno'])) {
+		    		$salt = $row['Salt'];
 		    	$encrypted = hash("sha256", $_POST['senha'] . $salt);
 
 		    	if ($row['SenhaAluno'] == $encrypted) {
@@ -51,8 +48,12 @@
 		    		$response["success"] = 0;
 			        $response["message"] = "Senha Incorreta! Verifique a sua senha e tente novamente...";
 			        die(json_encode($response));	
+		    		}
+		    	} else {
+		    		$response["success"] = 0;
+			        $response["message"] = "O Usuário informado ainda não fez seu cadastro!";
+		    		die(json_encode($response));
 		    	}
-
 		} 
 	}
 
