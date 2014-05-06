@@ -6,18 +6,18 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema tssi5
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+-- DROP SCHEMA IF EXISTS `tssi5` ;
+-- CREATE SCHEMA IF NOT EXISTS `tssi5` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+-- USE `tssi5` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Evento`
+-- Table `tssi5`.`Evento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Evento` ;
+DROP TABLE IF EXISTS `tssi5`.`Evento` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Evento` (
+CREATE TABLE IF NOT EXISTS `tssi5`.`Evento` (
   `idEvento` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `NomeEvento` VARCHAR(60) NOT NULL,
   `PalestranteEvento` VARCHAR(80) NOT NULL,
@@ -28,11 +28,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Aluno`
+-- Table `tssi5`.`Aluno`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Aluno` ;
+DROP TABLE IF EXISTS `tssi5`.`Aluno` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Aluno` (
+CREATE TABLE IF NOT EXISTS `tssi5`.`Aluno` (
   `idAluno` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `NomeAluno` VARCHAR(80) NULL,
   `MatriculaAluno` VARCHAR(7) NULL,
@@ -47,11 +47,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Evento_has_Aluno`
+-- Table `tssi5`.`Evento_has_Aluno`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Evento_has_Aluno` ;
+DROP TABLE IF EXISTS `tssi5`.`Evento_has_Aluno` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Evento_has_Aluno` (
+CREATE TABLE IF NOT EXISTS `tssi5`.`Evento_has_Aluno` (
   `Evento_idEvento` MEDIUMINT NOT NULL,
   `Aluno_idAluno` MEDIUMINT NOT NULL,
   PRIMARY KEY (`Evento_idEvento`, `Aluno_idAluno`),
@@ -59,12 +59,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Evento_has_Aluno` (
   INDEX `fk_Evento_has_Aluno_Evento_idx` (`Evento_idEvento` ASC),
   CONSTRAINT `fk_Evento_has_Aluno_Evento`
     FOREIGN KEY (`Evento_idEvento`)
-    REFERENCES `mydb`.`Evento` (`idEvento`)
+    REFERENCES `tssi5`.`Evento` (`idEvento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Evento_has_Aluno_Aluno1`
     FOREIGN KEY (`Aluno_idAluno`)
-    REFERENCES `mydb`.`Aluno` (`idAluno`)
+    REFERENCES `tssi5`.`Aluno` (`idAluno`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
