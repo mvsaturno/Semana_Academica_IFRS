@@ -2,7 +2,7 @@
 
 require("config.inc.php");
 
-$arq = "matricula_aluno.json";
+$arq = "2matricula_aluno.json";
 
 $json = json_decode(file_get_contents($arq), TRUE);
 

@@ -41,10 +41,11 @@
 		    		$encrypted = hash("sha256", $_POST['senha'] . $salt);
 
 		    	if ($row['SenhaAluno'] == $encrypted) {
-		    		// $response["success"] = 1;
-			        // $response["message"] = "Sucesso!";
 			        session_start('1');
 			        $_SESSION['lgn'] = 'abrolhos!';
+			        $_SESSION['Nome'] = $row['NomeAluno'];
+			        $_SESSION['Matricula'] = $row['MatriculaAluno'];
+			        $_SESSION['Email'] = $row['EmailAluno'];
 			        header('Location: index.php');
 		    	} else {
 			        $response["message"] = "Senha Incorreta! Verifique a sua senha e tente novamente...";

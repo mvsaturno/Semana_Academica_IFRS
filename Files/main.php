@@ -1,10 +1,12 @@
 <?php 
 
 	session_start('1');
-if ($_SESSION['lgn'] != 'abrolhos!') {
-	header('Location: login.php');
-} else {
+	
+	if ($_SESSION['lgn'] != 'abrolhos!') {
 
+		header('Location: login.php');
+
+	} else {
 
 ?>
 
@@ -17,12 +19,13 @@ if ($_SESSION['lgn'] != 'abrolhos!') {
 	</head>
 <body class="grid">
 
-<h1>Main Page!</h1>
+<h1> Bem Vindo(a) <?php echo $_SESSION['Nome']; ?>! </h1>
+
+<a href="logout.php" onclick="">Log Out</a>
 
 </body>
 </html>
 
 <?php
 }
-
- ?>
+?>
