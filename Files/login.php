@@ -31,6 +31,10 @@ if (isset($_SESSION['lgn'])) {
 	<input type="hidden" name="tipo" value="login" /> 
 	<input type="submit" value="Entrar" /> 
 
+	<div class="forgot">
+	<a href="iforgot.php">Esqueci a Senha!</a>
+	</div>
+
 </form>
 
 </div>

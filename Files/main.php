@@ -23,6 +23,18 @@
 
 <a href="logout.php" onclick="">Log Out</a>
 
+<?php 
+
+if ($_SESSION['Matricula'] == '0871117' || $_SESSION['Matricula'] == '0724114' || $_SESSION['Matricula'] == '0724114' || $_SESSION['Matricula'] == '0875112') {
+	?>
+
+	<a href="form_evento.php"><button>Cadastrar Evento!</button></a>
+
+<?php
+}
+
+ ?>
+
 </body>
 </html>
 

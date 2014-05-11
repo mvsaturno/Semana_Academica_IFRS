@@ -2,7 +2,7 @@
 
 require("config.inc.php");
 
-$arq = "2matricula_aluno.json";
+$arq = "matricula_aluno.json";
 
 $json = json_decode(file_get_contents($arq), TRUE);
 
@@ -29,6 +29,8 @@ foreach ($json['Alunos'] as $aluno) {
 			    } catch (PDOException $ex) {
 			    	$response["success"] = 0;
 			        $response["message"] = "Erro Ao inserir! Verifique a conexão";
+			        $response["aluno"] = $query_params;
+			        $response["error"] = $ex->getMessage();
 			        die(json_encode($response));
 			    }
 

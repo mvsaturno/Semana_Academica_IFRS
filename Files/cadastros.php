@@ -69,10 +69,7 @@ function trataStr($str){
 		    	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		    	$resultado = strcasecmp($row['NomeAluno'], trataStr($_POST['nome']));
-
-		    	echo "Resultado: ";
-		    	echo $resultado;
-
+		    	
 			    if ( $resultado !== 0 ) {
 			        $response["success"] = 0;
 			        $response["message"] = "Nome Incorreto. Verifique o nome informado. Em caso de problemas mande um email para a organização do evento!";
